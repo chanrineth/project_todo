@@ -20,7 +20,7 @@ class TodoController extends Controller
         ];
     }
 
-    public function store(Request $request)
+    public function store(\Illuminate\Http\Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
