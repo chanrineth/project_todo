@@ -18,7 +18,8 @@ class TodoController extends Controller
             'data' => $statuses
         ];
     }
-    public function store(Request $request )
+
+    public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -27,31 +28,58 @@ class TodoController extends Controller
 
         ]);
 
-        if(isset($request->id)){
+        if (isset($request->id)) {
 
-            $todo=Todo::findOrFail($request->id);
-            if($todo instanceof Todo){
-                $todo ->update($request->all());
+            $todo = Todo::findOrFail($request->id);
+            if ($todo instanceof Todo) {
+                $todo->update($request->all());
             }
             return [
-                'code' =>200,
-                'message'=>'success',
-                'data'=>$todo
+                'code' => 200,
+                'message' => 'success',
+                'data' => $todo
             ];
-        }
-
-
-        else
-        {
-            $todo=Todo::create($request->all());
+        } else {
+            $todo = Todo::create($request->all());
             return [
-                'code'=>200,
-                'message'=>'success',
-                'data'=>$todo
+                'code' => 200,
+                'message' => 'success',
+                'data' => $todo
             ];
         }
 
     }
+
+    public function delete($id)
+    {
+        $todo = findOrFail($id);
+        if ($todo instanceof Todo) {
+
+            $todo->delete();
+        }
+
+        return [
+            'code' => 200,
+            'message' => 'sucesss',
+            'data' => $todo
+
+        ];
+
+    }
+    public function getshow()
+    {
+        $todo = Todo::get();
+        return [
+            'code'=>200,
+            'message'=>'sucess',
+            'data' =>$todo
+
+        ];
+    }
+
+
+
+
 
 
 

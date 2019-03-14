@@ -17,7 +17,11 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
+
 Route::get('status', 'TodoController@status')->name('status');
 Route::post('store', 'TodoController@store')->name('store');
+Route::get('delete/{id}','TodoController@delete')->name('delete');
+Route::get('getshow','TodoController@getshow')->name('getshow');
+
 
 
