@@ -67,9 +67,22 @@ class TodoController extends Controller
 
     }
 
-    public function getshow()
+    public function getshow(Request $request)
     {
-        $todos = Todo::with('status')->get();
+        $keyword = $request->keyword;
+        $filter = $request->filter;
+
+        $todos = Todo::with('status');
+
+        if (isset($keyword)) {
+            $todos->where('title', 'ilike', $keyword.'%');
+        }
+
+        if (isset($filter)) {
+            $todos->where('status_id', $filter);
+        }
+
+        $todos->get();
         return [
             'code' => 200,
             'message' => 'sucess',
@@ -88,9 +101,9 @@ class TodoController extends Controller
         ];
     }
 
-    public function searchbyid($id)
+    public function searchbyid(Request $request)
     {
-        $todo =Todo::findOrFail($id);
+        $todo =Todo::findOrFail();
         return[
             'code' => 200,
             'message' =>'sucess',

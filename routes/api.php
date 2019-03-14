@@ -24,11 +24,10 @@ Route::post('store', 'TodoController@store')->name('store');
 
 Route::get('delete/{id}','TodoController@delete')->name('delete');
 
-Route::get('getshow','TodoController@getshow')->name('getshow');
+Route::post('getshow','TodoController@getshow')->name('getshow');
 
 Route::get('getshowbyid/{id}','TodoController@getshowbyid')->name('getshowbyid');
 
-Route::get('searchbyid/{id}','TodoController@searchbyid')->name('searchbyid');
 
 
 
