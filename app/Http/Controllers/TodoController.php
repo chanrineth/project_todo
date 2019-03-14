@@ -69,17 +69,15 @@ class TodoController extends Controller
 
     public function getshow(Request $request)
     {
-        $keyword = $request->keyword;
-        $filter = $request->filter;
 
         $todos = Todo::with('status');
 
-        if (isset($keyword)) {
-            $todos->where('title', 'ilike', $keyword.'%');
+        if (isset($request->keyword)) {
+            $todos->where('title', 'ilike', $request->keyword.'%');
         }
 
-        if (isset($filter)) {
-            $todos->where('status_id', $filter);
+        if (isset($request->filter)) {
+            $todos->where('status_id', $request->filter);
         }
 
         $todos->get();
@@ -100,22 +98,6 @@ class TodoController extends Controller
 
         ];
     }
-
-    public function searchbyid(Request $request)
-    {
-        $todo =Todo::findOrFail();
-        return[
-            'code' => 200,
-            'message' =>'sucess',
-            'data' => $todo
-
-        ];
-    }
-
-
-
-
-
 
 
 }
