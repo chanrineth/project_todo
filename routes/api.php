@@ -28,6 +28,10 @@ Route::get('getshow','TodoController@getshow')->name('getshow');
 
 Route::get('getshowbyid/{id}','TodoController@getshowbyid')->name('getshowbyid');
 
+Route::get('searchbyid/{id}','TodoController@searchbyid')->name('searchbyid');
+
+
+
 
 
 

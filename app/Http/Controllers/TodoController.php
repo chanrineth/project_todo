@@ -88,6 +88,18 @@ class TodoController extends Controller
         ];
     }
 
+    public function searchbyid($id)
+    {
+        $todo =Todo::findOrFail($id);
+        return[
+            'code' => 200,
+            'message' =>'sucess',
+            'data' => $todo
+
+        ];
+    }
+
+
 
 
 
