@@ -66,17 +66,27 @@ class TodoController extends Controller
         ];
 
     }
+
     public function getshow()
     {
         $todos = Todo::with('status')->get();
         return [
-            'code'=>200,
-            'message'=>'sucess',
-            'data' =>$todos
+            'code' => 200,
+            'message' => 'sucess',
+            'data' => $todos
 
         ];
     }
+    public function getshowbyid($id)
+    {
+        $todo =Todo::findOrFail($id);
+        return[
+            'code' => 200,
+            'message' =>'sucess',
+            'data' => $todo
 
+        ];
+    }
 
 
 

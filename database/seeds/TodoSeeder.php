@@ -13,7 +13,7 @@ class TodoSeeder extends Seeder
     {
         \App\Todo::create([
             'title'=> 'Hello01',
-            'description' => 'gvjdfnbjkdnfkb',
+            'description' => 'Go to university',
             'status_id' => 1,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
@@ -21,7 +21,7 @@ class TodoSeeder extends Seeder
 
         \App\Todo::create([
             'title'=> 'Hello02',
-            'description' => 'gvjdfnbjkdnfkb',
+            'description' => 'Go to cinema',
             'status_id' => 1,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
@@ -29,7 +29,7 @@ class TodoSeeder extends Seeder
 
         \App\Todo::create([
             'title'=> 'Hello03',
-            'description' => 'gvjdfnbjkdnfkb',
+            'description' => 'Go to shopping',
             'status_id' => 2,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
@@ -37,7 +37,7 @@ class TodoSeeder extends Seeder
 
         \App\Todo::create([
             'title'=> 'Hello04',
-            'description' => 'gvjdfnbjkdnfkb',
+            'description' => 'Go to hospital',
             'status_id' =>3,
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now()
