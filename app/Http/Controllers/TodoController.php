@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Status;
 use App\Todo;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
@@ -20,7 +20,7 @@ class TodoController extends Controller
         ];
     }
 
-    public function store(\Illuminate\Http\Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -73,19 +73,17 @@ class TodoController extends Controller
         $todos = Todo::with('status');
 
         if (isset($request->keyword)) {
-            $todos->where('title', 'ilike', $request->keyword.'%');
+            $todos = $todos->where('title', 'ilike', '%'.$request->keyword.'%');
         }
 
         if (isset($request->filter)) {
-            $todos->where('status_id', $request->filter);
+           $todos = $todos->where('status_id', $request->filter);
         }
 
-        $todos->get();
         return [
             'code' => 200,
             'message' => 'sucess',
-            'data' => $todos
-
+            'data' => $todos->get()
         ];
     }
     public function getshowbyid($id)
