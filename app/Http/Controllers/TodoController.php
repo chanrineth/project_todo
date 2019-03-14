@@ -39,6 +39,8 @@ class TodoController extends Controller
                 'data'=>$todo
             ];
         }
+
+
         else
         {
             $todo=Todo::create($request->all());
