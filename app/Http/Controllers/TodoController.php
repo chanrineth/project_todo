@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Status;
 use App\Todo;
+use Illuminate\Support\Facades\Request;
 
 class TodoController extends Controller
 {
@@ -52,12 +53,11 @@ class TodoController extends Controller
 
     public function delete($id)
     {
-        $todo = findOrFail($id);
+        $todo = Todo::findOrFail($id);
         if ($todo instanceof Todo) {
 
             $todo->delete();
         }
-
         return [
             'code' => 200,
             'message' => 'sucesss',
